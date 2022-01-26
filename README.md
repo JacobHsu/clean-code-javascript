@@ -406,3 +406,70 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+
+### Avoid type-checking (part 1)
+
+JavaScript is untyped, which means your functions can take any type of argument.
+Sometimes you are bitten by this freedom and it becomes tempting to do
+type-checking in your functions. There are many ways to avoid having to do this.
+The first thing to consider is consistent APIs.
+
+**Bad:**
+
+```javascript
+function travelToTexas(vehicle) {
+  if (vehicle instanceof Bicycle) {
+    vehicle.pedal(this.currentLocation, new Location("texas"));
+  } else if (vehicle instanceof Car) {
+    vehicle.drive(this.currentLocation, new Location("texas"));
+  }
+}
+```
+
+**Good:**
+
+```javascript
+function travelToTexas(vehicle) {
+  vehicle.move(this.currentLocation, new Location("texas"));
+}
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Avoid type-checking (part 2)
+
+If you are working with basic primitive values like strings and integers,
+and you can't use polymorphism but you still feel the need to type-check,
+you should consider using TypeScript. It is an excellent alternative to normal
+JavaScript, as it provides you with static typing on top of standard JavaScript
+syntax. The problem with manually type-checking normal JavaScript is that
+doing it well requires so much extra verbiage that the faux "type-safety" you get
+doesn't make up for the lost readability. Keep your JavaScript clean, write
+good tests, and have good code reviews. Otherwise, do all of that but with
+TypeScript (which, like I said, is a great alternative!).
+
+**Bad:**
+
+```javascript
+function combine(val1, val2) {
+  if (
+    (typeof val1 === "number" && typeof val2 === "number") ||
+    (typeof val1 === "string" && typeof val2 === "string")
+  ) {
+    return val1 + val2;
+  }
+
+  throw new Error("Must be of type String or Number");
+}
+```
+
+**Good:**
+
+```javascript
+function combine(val1, val2) {
+  return val1 + val2;
+}
+```
+
+**[⬆ back to top](#table-of-contents)**
