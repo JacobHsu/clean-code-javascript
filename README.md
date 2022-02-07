@@ -9,6 +9,7 @@
 8. [Concurrency](#concurrency)
 10. [Formatting](#formatting)
 11. [Comments](#comments)
+12. [Translation](#translation)
 
 ## **Variables**
 
@@ -1021,4 +1022,6 @@ function combine(a, b) {
 
 **[⬆ back to top](#table-of-contents)**
 
+## Translation
 
+- ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Traditional Chinese**: [AllJointTW/clean-code-javascript](https://github.com/AllJointTW/clean-code-javascript)
